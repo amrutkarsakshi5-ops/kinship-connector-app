@@ -157,17 +157,28 @@ function Home() {
             <Link
               key={c.name}
               to="/search"
-              className={`group relative flex flex-col overflow-hidden rounded-[20px] border border-border bg-gradient-to-br ${c.tint} p-3 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-ember sm:p-5`}
+              className={`group relative flex flex-col overflow-hidden rounded-[20px] border border-border bg-gradient-to-br ${c.tint} shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-ember`}
             >
-              <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-card shadow-sm transition-transform group-hover:scale-110 sm:h-11 sm:w-11">
-                <c.icon className="h-4 w-4 text-ember sm:h-5 sm:w-5" />
-              </span>
-              <p className="mt-3 font-display text-base leading-tight tracking-wide sm:mt-5 sm:text-2xl">{c.name}</p>
-              <p className="text-[10px] text-muted-foreground sm:text-xs">{c.count}</p>
-              <p className="mt-1 hidden text-xs text-muted-foreground sm:line-clamp-2 sm:block">{c.desc}</p>
-              <span className="mt-3 inline-flex w-fit items-center gap-1 rounded-full bg-card/80 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-ember backdrop-blur transition-colors group-hover:bg-ember group-hover:text-white sm:mt-4 sm:px-3 sm:py-1.5">
-                Explore <ArrowRight className="h-3 w-3" />
-              </span>
+              <div className="relative aspect-square overflow-hidden sm:aspect-[4/3]">
+                <img
+                  src={c.img}
+                  alt={c.name}
+                  loading="lazy"
+                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+                <span className="absolute left-2 top-2 grid h-8 w-8 place-items-center rounded-lg bg-card/95 shadow-sm backdrop-blur sm:left-3 sm:top-3 sm:h-10 sm:w-10 sm:rounded-xl">
+                  <c.icon className="h-4 w-4 text-ember sm:h-5 sm:w-5" />
+                </span>
+              </div>
+              <div className="flex flex-1 flex-col p-3 sm:p-4">
+                <p className="font-display text-base leading-tight tracking-wide sm:text-xl">{c.name}</p>
+                <p className="text-[10px] text-muted-foreground sm:text-xs">{c.count}</p>
+                <p className="mt-1 hidden text-xs text-muted-foreground sm:line-clamp-2 sm:block">{c.desc}</p>
+                <span className="mt-2 inline-flex w-fit items-center gap-1 rounded-full bg-card px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-ember transition-colors group-hover:bg-ember group-hover:text-white sm:mt-3 sm:px-3 sm:py-1.5">
+                  Explore <ArrowRight className="h-3 w-3" />
+                </span>
+              </div>
             </Link>
           ))}
         </div>
