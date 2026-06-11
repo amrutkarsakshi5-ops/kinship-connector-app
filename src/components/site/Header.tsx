@@ -1,6 +1,7 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { Search } from "lucide-react";
+import { Search, ShieldCheck } from "lucide-react";
 import { Logo } from "./Logo";
+import { useAuth } from "@/hooks/useAuth";
 
 const NAV = [
   { label: "Home", to: "/" },
@@ -12,6 +13,7 @@ const NAV = [
 
 export function Header() {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const { user, isAdmin } = useAuth();
 
   return (
     <header className="sticky top-0 z-40 border-b border-border/70 bg-background/85 backdrop-blur-md">
@@ -39,6 +41,19 @@ export function Header() {
               </Link>
             );
           })}
+          {isAdmin && (
+            <Link
+              to="/admin"
+              className={
+                "inline-flex items-center gap-1.5 rounded-full px-4 py-1.5 text-xs font-bold uppercase tracking-[0.18em] transition-colors " +
+                (pathname.startsWith("/admin")
+                  ? "bg-ember/10 text-ember"
+                  : "text-muted-foreground hover:text-foreground")
+              }
+            >
+              <ShieldCheck className="h-3.5 w-3.5" /> Admin
+            </Link>
+          )}
         </nav>
 
         <div className="ml-auto flex items-center gap-3">
@@ -50,9 +65,12 @@ export function Header() {
               className="w-52 bg-transparent text-foreground placeholder:text-muted-foreground focus:outline-none"
             />
           </label>
-          <button className="rounded-full bg-gradient-ember px-5 py-2 text-xs font-bold uppercase tracking-[0.18em] text-white shadow-ember transition-transform hover:-translate-y-0.5">
-            Sign In
-          </button>
+          <Link
+            to={user ? "/admin" : "/auth"}
+            className="rounded-full bg-gradient-ember px-5 py-2 text-xs font-bold uppercase tracking-[0.18em] text-white shadow-ember transition-transform hover:-translate-y-0.5"
+          >
+            {user ? "Dashboard" : "Sign In"}
+          </Link>
         </div>
       </div>
     </header>
