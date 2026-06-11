@@ -107,14 +107,16 @@ type DbGym = {
   category: string | null;
   image_url: string | null;
   featured: boolean;
+  website_url: string | null;
 };
 
 function Home() {
   const [dbGyms, setDbGyms] = useState<DbGym[]>([]);
+  const [previewGym, setPreviewGym] = useState<{ name: string; url: string } | null>(null);
   useEffect(() => {
     supabase
       .from("gyms")
-      .select("id,name,city,state,category,image_url,featured")
+      .select("id,name,city,state,category,image_url,featured,website_url")
       .eq("status", "active")
       .order("featured", { ascending: false })
       .order("created_at", { ascending: false })
