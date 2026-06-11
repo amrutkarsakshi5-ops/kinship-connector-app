@@ -112,80 +112,25 @@ function Home() {
         <div className="pointer-events-none absolute -left-20 top-1/3 h-72 w-72 rounded-full bg-violet/30 blur-3xl animate-float" />
         <div className="pointer-events-none absolute -right-10 -top-10 h-80 w-80 rounded-full bg-sunshine/40 blur-3xl" />
 
-        <div className="mx-auto grid max-w-7xl gap-12 px-4 py-20 sm:px-6 md:py-28 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-          <div>
-            <form className="mb-8 flex items-center gap-2 rounded-2xl border border-border bg-card p-2 shadow-sm">
-              <label className="flex flex-1 items-center gap-2 rounded-xl px-3 py-2">
-                <Search className="h-4 w-4 text-muted-foreground" />
-                <input
-                  type="text"
-                  placeholder="Search gyms, trainers, sports, events…"
-                  className="w-full bg-transparent text-sm focus:outline-none"
-                />
-              </label>
-              <button
-                type="submit"
-                className="rounded-xl bg-gradient-ember px-6 py-3 text-sm font-bold uppercase tracking-[0.18em] text-white shadow-ember"
-              >
-                Search
-              </button>
-            </form>
-
-            <span className="inline-flex items-center gap-2 rounded-full border border-ember/40 bg-gradient-to-r from-ember/20 via-sunshine/20 to-lime/20 px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-ember">
-              <Flame className="h-3.5 w-3.5" /> 12,400+ verified pros
-            </span>
-            <h1 className="mt-6 font-display text-5xl leading-[0.95] tracking-wide sm:text-7xl md:text-[5.5rem]">
-              Find your <span className="text-gradient-rainbow">edge.</span>
-              <br />
-              Anywhere in <span className="text-gradient-ember">America.</span>
-            </h1>
-            <p className="mt-6 max-w-xl text-lg text-muted-foreground">
-              The directory built for athletes. Gyms, coaches, dojos, clubs, and events —
-              all vetted, all in one place.
-            </p>
-
-            <div className="mt-6 flex flex-wrap items-center gap-2 text-sm">
-              <span className="text-muted-foreground">Trending:</span>
-              {["#24/7Gyms", "#BJJ", "#MarathonCoach", "#ReformerPilates", "#CrossFit"].map(
-                (t) => (
-                  <Link
-                    key={t}
-                    to="/search"
-                    className="rounded-full bg-muted px-3 py-1 text-xs font-semibold text-foreground hover:bg-ember/10 hover:text-ember"
-                  >
-                    {t}
-                  </Link>
-                ),
-              )}
-            </div>
-          </div>
-
-          {/* Hero card */}
-          <div className="relative">
-            <div className="overflow-hidden rounded-3xl border border-border bg-card shadow-xl">
-              <img
-                src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1100&q=80"
-                alt="Athlete training"
-                className="aspect-[4/3] w-full object-cover"
+        <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 sm:py-8">
+          <form className="flex items-center gap-2 rounded-2xl border border-border bg-card p-2 shadow-sm">
+            <label className="flex flex-1 items-center gap-2 rounded-xl px-3 py-2">
+              <Search className="h-4 w-4 text-muted-foreground" />
+              <input
+                type="text"
+                placeholder="Search gyms, trainers, sports, events…"
+                className="w-full bg-transparent text-sm focus:outline-none"
               />
-              <div className="flex items-center gap-3 p-4">
-                <span className="grid h-9 w-9 place-items-center rounded-full bg-ember/10 text-ember">
-                  <Star className="h-4 w-4 fill-current" />
-                </span>
-                <div>
-                  <p className="font-display tracking-wide">Iron Forge Athletics</p>
-                  <p className="text-xs text-muted-foreground">
-                    4.8 · 1,284 reviews · New York, NY
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="absolute -right-4 -top-4 rotate-3 rounded-2xl bg-gradient-ember px-4 py-3 text-center text-white shadow-ember">
-              <p className="font-display text-2xl leading-none">+248</p>
-              <p className="text-[10px] font-bold uppercase tracking-[0.2em]">joined today</p>
-            </div>
-          </div>
+            </label>
+            <button
+              type="submit"
+              className="rounded-xl bg-gradient-ember px-6 py-3 text-sm font-bold uppercase tracking-[0.18em] text-white shadow-ember"
+            >
+              Search
+            </button>
+          </form>
         </div>
+
       </section>
 
       {/* CATEGORIES */}
