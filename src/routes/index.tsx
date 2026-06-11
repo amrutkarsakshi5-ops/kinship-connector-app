@@ -107,14 +107,16 @@ type DbGym = {
   category: string | null;
   image_url: string | null;
   featured: boolean;
+  website: string | null;
 };
 
 function Home() {
   const [dbGyms, setDbGyms] = useState<DbGym[]>([]);
+  const [previewGym, setPreviewGym] = useState<{ name: string; url: string } | null>(null);
   useEffect(() => {
     supabase
       .from("gyms")
-      .select("id,name,city,state,category,image_url,featured")
+      .select("id,name,city,state,category,image_url,featured,website")
       .eq("status", "active")
       .order("featured", { ascending: false })
       .order("created_at", { ascending: false })
@@ -126,7 +128,7 @@ function Home() {
       .on("postgres_changes", { event: "*", schema: "public", table: "gyms" }, async () => {
         const { data } = await supabase
           .from("gyms")
-          .select("id,name,city,state,category,image_url,featured")
+          .select("id,name,city,state,category,image_url,featured,website")
           .eq("status", "active")
           .order("featured", { ascending: false })
           .order("created_at", { ascending: false })
@@ -253,12 +255,21 @@ function Home() {
                     g.image_url ??
                     "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=900&q=80",
                   featured: g.featured,
+                  website: g.website,
                 }))
-              : LISTINGS.map((l) => ({ ...l, featured: false }))
+              : LISTINGS.map((l) => ({ ...l, featured: false, website: null as string | null }))
             ).map((l) => (
-              <article
+              <button
+                type="button"
                 key={l.name}
-                className="group overflow-hidden rounded-2xl border border-border bg-card transition-transform hover:-translate-y-1"
+                onClick={() => {
+                  if (!l.website) return;
+                  const url = /^https?:\/\//i.test(l.website) ? l.website : `https://${l.website}`;
+                  setPreviewGym({ name: l.name, url });
+                }}
+                className="group overflow-hidden rounded-2xl border border-border bg-card text-left transition-transform hover:-translate-y-1 disabled:cursor-not-allowed"
+                disabled={!l.website}
+                title={l.website ? `Open ${l.name}` : "No website available"}
               >
                 <div className="relative aspect-[4/3] overflow-hidden">
                   <img
@@ -281,7 +292,7 @@ function Home() {
                     <MapPin className="h-3 w-3" /> {l.city}
                   </p>
                 </div>
-              </article>
+              </button>
             ))}
           </div>
         </div>
@@ -383,6 +394,50 @@ function Home() {
           </Link>
         </div>
       </section>
+
+      {/* WEBSITE PREVIEW MODAL */}
+      {previewGym && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 p-2 sm:p-6"
+          onClick={() => setPreviewGym(null)}
+        >
+          <div
+            className="flex h-full w-full max-w-6xl flex-col overflow-hidden rounded-2xl bg-card shadow-2xl sm:h-[90vh]"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between gap-3 border-b border-border px-4 py-3">
+              <div className="min-w-0">
+                <p className="truncate font-display text-base tracking-wide">{previewGym.name}</p>
+                <p className="truncate text-xs text-muted-foreground">{previewGym.url}</p>
+              </div>
+              <div className="flex shrink-0 items-center gap-2">
+                <a
+                  href={previewGym.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-lg border border-border px-3 py-1.5 text-xs font-bold uppercase tracking-[0.14em] hover:bg-muted"
+                >
+                  Open ↗
+                </a>
+                <button
+                  type="button"
+                  onClick={() => setPreviewGym(null)}
+                  className="rounded-lg bg-ember px-3 py-1.5 text-xs font-bold uppercase tracking-[0.14em] text-white"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+            <iframe
+              src={previewGym.url}
+              title={previewGym.name}
+              className="h-full w-full flex-1 bg-white"
+              sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+              referrerPolicy="no-referrer"
+            />
+          </div>
+        </div>
+      )}
     </>
   );
 }
