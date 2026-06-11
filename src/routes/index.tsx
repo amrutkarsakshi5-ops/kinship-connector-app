@@ -107,7 +107,7 @@ type DbGym = {
   category: string | null;
   image_url: string | null;
   featured: boolean;
-  website_url: string | null;
+  website: string | null;
 };
 
 function Home() {
@@ -116,7 +116,7 @@ function Home() {
   useEffect(() => {
     supabase
       .from("gyms")
-      .select("id,name,city,state,category,image_url,featured,website_url")
+      .select("id,name,city,state,category,image_url,featured,website")
       .eq("status", "active")
       .order("featured", { ascending: false })
       .order("created_at", { ascending: false })
