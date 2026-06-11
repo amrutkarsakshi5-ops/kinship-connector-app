@@ -244,7 +244,18 @@ function Home() {
           </div>
 
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {LISTINGS.map((l) => (
+            {(dbGyms.length > 0
+              ? dbGyms.map((g) => ({
+                  name: g.name,
+                  city: [g.city, g.state].filter(Boolean).join(", ") || "—",
+                  tag: g.category ?? "Gym",
+                  img:
+                    g.image_url ??
+                    "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=900&q=80",
+                  featured: g.featured,
+                }))
+              : LISTINGS.map((l) => ({ ...l, featured: false }))
+            ).map((l) => (
               <article
                 key={l.name}
                 className="group overflow-hidden rounded-2xl border border-border bg-card transition-transform hover:-translate-y-1"
@@ -258,17 +269,17 @@ function Home() {
                   <span className="absolute left-3 top-3 rounded-full bg-card/90 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-foreground backdrop-blur">
                     {l.tag}
                   </span>
+                  {l.featured && (
+                    <span className="absolute right-3 top-3 inline-flex items-center gap-1 rounded-full bg-gradient-ember px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-white">
+                      <Star className="h-3 w-3 fill-white" /> Featured
+                    </span>
+                  )}
                 </div>
                 <div className="p-4">
                   <p className="font-display text-lg tracking-wide">{l.name}</p>
                   <p className="mt-1 flex items-center gap-1.5 text-xs text-muted-foreground">
                     <MapPin className="h-3 w-3" /> {l.city}
                   </p>
-                  <div className="mt-3 flex items-center gap-1 text-xs">
-                    <Star className="h-3.5 w-3.5 fill-ember text-ember" />
-                    <span className="font-semibold">{l.rating}</span>
-                    <span className="text-muted-foreground">({l.reviews})</span>
-                  </div>
                 </div>
               </article>
             ))}
