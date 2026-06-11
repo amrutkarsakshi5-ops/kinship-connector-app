@@ -128,7 +128,7 @@ function Home() {
       .on("postgres_changes", { event: "*", schema: "public", table: "gyms" }, async () => {
         const { data } = await supabase
           .from("gyms")
-          .select("id,name,city,state,category,image_url,featured")
+          .select("id,name,city,state,category,image_url,featured,website")
           .eq("status", "active")
           .order("featured", { ascending: false })
           .order("created_at", { ascending: false })
