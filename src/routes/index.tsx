@@ -134,13 +134,13 @@ function Home() {
       </section>
 
       {/* CATEGORIES */}
-      <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6">
+      <section className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-12">
         <div className="flex items-end justify-between gap-4">
           <div>
             <p className="text-xs font-bold uppercase tracking-[0.2em] text-ember">
               Browse by category
             </p>
-            <h2 className="mt-2 font-display text-4xl tracking-wide sm:text-5xl">
+            <h2 className="mt-2 font-display text-3xl tracking-wide sm:text-5xl">
               What are you training for?
             </h2>
           </div>
@@ -152,18 +152,22 @@ function Home() {
           </Link>
         </div>
 
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-6 grid grid-cols-2 gap-3 sm:mt-10 sm:gap-4 lg:grid-cols-4">
           {CATEGORIES.map((c) => (
             <Link
               key={c.name}
               to="/search"
-              className={`group relative overflow-hidden rounded-2xl border border-border bg-gradient-to-br ${c.tint} p-5 transition-transform hover:-translate-y-1`}
+              className={`group relative flex flex-col overflow-hidden rounded-[20px] border border-border bg-gradient-to-br ${c.tint} p-3 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-ember sm:p-5`}
             >
-              <span className="grid h-11 w-11 place-items-center rounded-xl bg-card shadow-sm">
-                <c.icon className="h-5 w-5 text-ember" />
+              <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-card shadow-sm transition-transform group-hover:scale-110 sm:h-11 sm:w-11">
+                <c.icon className="h-4 w-4 text-ember sm:h-5 sm:w-5" />
               </span>
-              <p className="mt-6 font-display text-2xl tracking-wide">{c.name}</p>
-              <p className="text-xs text-muted-foreground">{c.count}</p>
+              <p className="mt-3 font-display text-base leading-tight tracking-wide sm:mt-5 sm:text-2xl">{c.name}</p>
+              <p className="text-[10px] text-muted-foreground sm:text-xs">{c.count}</p>
+              <p className="mt-1 hidden text-xs text-muted-foreground sm:line-clamp-2 sm:block">{c.desc}</p>
+              <span className="mt-3 inline-flex w-fit items-center gap-1 rounded-full bg-card/80 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-ember backdrop-blur transition-colors group-hover:bg-ember group-hover:text-white sm:mt-4 sm:px-3 sm:py-1.5">
+                Explore <ArrowRight className="h-3 w-3" />
+              </span>
             </Link>
           ))}
         </div>
