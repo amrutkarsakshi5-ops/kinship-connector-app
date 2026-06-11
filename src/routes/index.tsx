@@ -99,7 +99,46 @@ const CITIES = [
   { name: "Miami", count: "920 pros", img: "https://images.unsplash.com/photo-1535498730771-e735b998cd64?auto=format&fit=crop&w=600&q=80" },
 ];
 
+type DbGym = {
+  id: string;
+  name: string;
+  city: string | null;
+  state: string | null;
+  category: string | null;
+  image_url: string | null;
+  featured: boolean;
+};
+
 function Home() {
+  const [dbGyms, setDbGyms] = useState<DbGym[]>([]);
+  useEffect(() => {
+    supabase
+      .from("gyms")
+      .select("id,name,city,state,category,image_url,featured")
+      .eq("status", "active")
+      .order("featured", { ascending: false })
+      .order("created_at", { ascending: false })
+      .limit(8)
+      .then(({ data }) => setDbGyms((data as DbGym[]) ?? []));
+
+    const ch = supabase
+      .channel("gyms-home")
+      .on("postgres_changes", { event: "*", schema: "public", table: "gyms" }, async () => {
+        const { data } = await supabase
+          .from("gyms")
+          .select("id,name,city,state,category,image_url,featured")
+          .eq("status", "active")
+          .order("featured", { ascending: false })
+          .order("created_at", { ascending: false })
+          .limit(8);
+        setDbGyms((data as DbGym[]) ?? []);
+      })
+      .subscribe();
+    return () => {
+      supabase.removeChannel(ch);
+    };
+  }, []);
+
   return (
     <>
       {/* HERO */}
