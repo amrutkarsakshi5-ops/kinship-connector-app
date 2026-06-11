@@ -255,12 +255,21 @@ function Home() {
                     g.image_url ??
                     "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=900&q=80",
                   featured: g.featured,
+                  website: g.website,
                 }))
-              : LISTINGS.map((l) => ({ ...l, featured: false }))
+              : LISTINGS.map((l) => ({ ...l, featured: false, website: null as string | null }))
             ).map((l) => (
-              <article
+              <button
+                type="button"
                 key={l.name}
-                className="group overflow-hidden rounded-2xl border border-border bg-card transition-transform hover:-translate-y-1"
+                onClick={() => {
+                  if (!l.website) return;
+                  const url = /^https?:\/\//i.test(l.website) ? l.website : `https://${l.website}`;
+                  setPreviewGym({ name: l.name, url });
+                }}
+                className="group overflow-hidden rounded-2xl border border-border bg-card text-left transition-transform hover:-translate-y-1 disabled:cursor-not-allowed"
+                disabled={!l.website}
+                title={l.website ? `Open ${l.name}` : "No website available"}
               >
                 <div className="relative aspect-[4/3] overflow-hidden">
                   <img
@@ -283,7 +292,7 @@ function Home() {
                     <MapPin className="h-3 w-3" /> {l.city}
                   </p>
                 </div>
-              </article>
+              </button>
             ))}
           </div>
         </div>
