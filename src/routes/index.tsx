@@ -394,6 +394,50 @@ function Home() {
           </Link>
         </div>
       </section>
+
+      {/* WEBSITE PREVIEW MODAL */}
+      {previewGym && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 p-2 sm:p-6"
+          onClick={() => setPreviewGym(null)}
+        >
+          <div
+            className="flex h-full w-full max-w-6xl flex-col overflow-hidden rounded-2xl bg-card shadow-2xl sm:h-[90vh]"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between gap-3 border-b border-border px-4 py-3">
+              <div className="min-w-0">
+                <p className="truncate font-display text-base tracking-wide">{previewGym.name}</p>
+                <p className="truncate text-xs text-muted-foreground">{previewGym.url}</p>
+              </div>
+              <div className="flex shrink-0 items-center gap-2">
+                <a
+                  href={previewGym.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-lg border border-border px-3 py-1.5 text-xs font-bold uppercase tracking-[0.14em] hover:bg-muted"
+                >
+                  Open ↗
+                </a>
+                <button
+                  type="button"
+                  onClick={() => setPreviewGym(null)}
+                  className="rounded-lg bg-ember px-3 py-1.5 text-xs font-bold uppercase tracking-[0.14em] text-white"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+            <iframe
+              src={previewGym.url}
+              title={previewGym.name}
+              className="h-full w-full flex-1 bg-white"
+              sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+              referrerPolicy="no-referrer"
+            />
+          </div>
+        </div>
+      )}
     </>
   );
 }
