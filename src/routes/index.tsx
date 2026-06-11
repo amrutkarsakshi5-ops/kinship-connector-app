@@ -114,6 +114,23 @@ function Home() {
 
         <div className="mx-auto grid max-w-7xl gap-12 px-4 py-20 sm:px-6 md:py-28 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
           <div>
+            <form className="mb-8 flex items-center gap-2 rounded-2xl border border-border bg-card p-2 shadow-sm">
+              <label className="flex flex-1 items-center gap-2 rounded-xl px-3 py-2">
+                <Search className="h-4 w-4 text-muted-foreground" />
+                <input
+                  type="text"
+                  placeholder="Search gyms, trainers, sports, events…"
+                  className="w-full bg-transparent text-sm focus:outline-none"
+                />
+              </label>
+              <button
+                type="submit"
+                className="rounded-xl bg-gradient-ember px-6 py-3 text-sm font-bold uppercase tracking-[0.18em] text-white shadow-ember"
+              >
+                Search
+              </button>
+            </form>
+
             <span className="inline-flex items-center gap-2 rounded-full border border-ember/40 bg-gradient-to-r from-ember/20 via-sunshine/20 to-lime/20 px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-ember">
               <Flame className="h-3.5 w-3.5" /> 12,400+ verified pros
             </span>
@@ -126,31 +143,6 @@ function Home() {
               The directory built for athletes. Gyms, coaches, dojos, clubs, and events —
               all vetted, all in one place.
             </p>
-
-            <form className="mt-8 flex flex-col gap-2 rounded-2xl border border-border bg-card p-2 shadow-sm sm:flex-row">
-              <label className="flex flex-1 items-center gap-2 rounded-xl px-3 py-2">
-                <Search className="h-4 w-4 text-muted-foreground" />
-                <input
-                  type="text"
-                  placeholder="Gym, trainer, sport…"
-                  className="w-full bg-transparent text-sm focus:outline-none"
-                />
-              </label>
-              <label className="flex flex-1 items-center gap-2 rounded-xl px-3 py-2 sm:border-l sm:border-border">
-                <MapPin className="h-4 w-4 text-muted-foreground" />
-                <input
-                  type="text"
-                  defaultValue="New York, NY"
-                  className="w-full bg-transparent text-sm focus:outline-none"
-                />
-              </label>
-              <button
-                type="submit"
-                className="rounded-xl bg-gradient-ember px-6 py-3 text-sm font-bold uppercase tracking-[0.18em] text-white shadow-ember"
-              >
-                Search
-              </button>
-            </form>
 
             <div className="mt-6 flex flex-wrap items-center gap-2 text-sm">
               <span className="text-muted-foreground">Trending:</span>
