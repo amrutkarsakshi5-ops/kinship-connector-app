@@ -200,6 +200,7 @@ function Home() {
             <Link
               key={c.name}
               to="/search"
+              search={{ category: c.slug }}
               className={`group relative flex flex-col overflow-hidden rounded-[20px] border border-border bg-gradient-to-br ${c.tint} shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-ember`}
             >
               <div className="relative aspect-square overflow-hidden sm:aspect-[4/3]">
