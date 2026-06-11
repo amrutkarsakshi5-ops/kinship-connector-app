@@ -36,14 +36,14 @@ export const Route = createFileRoute("/")({
 });
 
 const CATEGORIES = [
-  { name: "Gyms", count: "4,200 listings", desc: "Strength, conditioning & full fitness floors.", icon: Dumbbell, tint: "from-ember/20 to-sunshine/10" },
-  { name: "Personal Trainers", count: "1,850 listings", desc: "1-on-1 coaches for every goal and level.", icon: User, tint: "from-azure/20 to-violet/10" },
-  { name: "Yoga & Pilates", count: "920 listings", desc: "Mat, reformer, vinyasa and restorative.", icon: Flower2, tint: "from-lime/20 to-sunshine/10" },
-  { name: "CrossFit Boxes", count: "480 listings", desc: "Affiliate boxes, WODs and community.", icon: Flame, tint: "from-violet/20 to-ember/10" },
-  { name: "Martial Arts", count: "760 listings", desc: "BJJ, Muay Thai, MMA, karate and boxing.", icon: Swords, tint: "from-ember/20 to-violet/10" },
-  { name: "Sports Clubs", count: "1,340 listings", desc: "Leagues, teams and pick-up across sports.", icon: Trophy, tint: "from-sunshine/25 to-ember/10" },
-  { name: "Nutritionists", count: "410 listings", desc: "Dietitians and performance nutrition.", icon: Apple, tint: "from-lime/25 to-azure/10" },
-  { name: "Sports Physio", count: "620 listings", desc: "Recovery, rehab and injury prevention.", icon: Activity, tint: "from-azure/25 to-lime/10" },
+  { name: "Gyms", count: "4,200 listings", desc: "Strength, conditioning & full fitness floors.", icon: Dumbbell, tint: "from-ember/20 to-sunshine/10", img: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=600&q=80" },
+  { name: "Personal Trainers", count: "1,850 listings", desc: "1-on-1 coaches for every goal and level.", icon: User, tint: "from-azure/20 to-violet/10", img: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=600&q=80" },
+  { name: "Yoga & Pilates", count: "920 listings", desc: "Mat, reformer, vinyasa and restorative.", icon: Flower2, tint: "from-lime/20 to-sunshine/10", img: "https://images.unsplash.com/photo-1545205597-3d9d02c29597?auto=format&fit=crop&w=600&q=80" },
+  { name: "CrossFit Boxes", count: "480 listings", desc: "Affiliate boxes, WODs and community.", icon: Flame, tint: "from-violet/20 to-ember/10", img: "https://images.unsplash.com/photo-1517963879433-6ad2b056d712?auto=format&fit=crop&w=600&q=80" },
+  { name: "Martial Arts", count: "760 listings", desc: "BJJ, Muay Thai, MMA, karate and boxing.", icon: Swords, tint: "from-ember/20 to-violet/10", img: "https://images.unsplash.com/photo-1554068865-24cecd4e34b8?auto=format&fit=crop&w=600&q=80" },
+  { name: "Sports Clubs", count: "1,340 listings", desc: "Leagues, teams and pick-up across sports.", icon: Trophy, tint: "from-sunshine/25 to-ember/10", img: "https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=600&q=80" },
+  { name: "Nutritionists", count: "410 listings", desc: "Dietitians and performance nutrition.", icon: Apple, tint: "from-lime/25 to-azure/10", img: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=600&q=80" },
+  { name: "Sports Physio", count: "620 listings", desc: "Recovery, rehab and injury prevention.", icon: Activity, tint: "from-azure/25 to-lime/10", img: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=600&q=80" },
 ];
 
 const LISTINGS = [
