@@ -213,9 +213,9 @@ function Home() {
                 </span>
               </div>
               <div className="flex flex-1 flex-col p-3 sm:p-4">
-                <p className="font-display text-base leading-tight tracking-wide sm:text-xl">{c.name}</p>
-                <p className="text-[10px] text-muted-foreground sm:text-xs">{c.count}</p>
-                <p className="mt-1 hidden text-xs text-muted-foreground sm:line-clamp-2 sm:block">{c.desc}</p>
+                <p className="font-poppins text-base font-semibold leading-tight sm:text-xl">{c.name}</p>
+                <p className="font-poppins text-[10px] font-medium text-muted-foreground sm:text-xs">{c.count}</p>
+                <p className="mt-1 hidden font-poppins text-xs font-normal text-muted-foreground sm:line-clamp-2 sm:block">{c.desc}</p>
                 <span className="mt-2 inline-flex w-fit items-center gap-1 rounded-full bg-card px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-ember transition-colors group-hover:bg-ember group-hover:text-white sm:mt-3 sm:px-3 sm:py-1.5">
                   Explore <ArrowRight className="h-3 w-3" />
                 </span>
