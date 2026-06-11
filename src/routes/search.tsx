@@ -101,7 +101,7 @@ function SearchPage() {
   }, [gyms, activeCat, query]);
 
   const setCat = (c: string) => {
-    navigate({ search: (prev) => ({ ...prev, category: c === "All" ? undefined : c }) });
+    navigate({ search: (prev: z.infer<typeof searchSchema>) => ({ ...prev, category: c === "All" ? undefined : c }) });
   };
 
   const openPreview = (g: DbGym) => {
