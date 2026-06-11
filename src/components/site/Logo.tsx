@@ -7,8 +7,8 @@ export function Logo() {
       <span className="grid h-9 w-9 place-items-center rounded-xl bg-gradient-ember shadow-ember">
         <Flame className="h-5 w-5 text-white" strokeWidth={2.5} />
       </span>
-      <span className="font-display text-2xl tracking-wide">
-        FORGE<span className="text-gradient-ember">DIAL</span>
+      <span className="font-logo text-2xl font-bold tracking-tight">
+        Forge<span className="text-gradient-ember">Dial</span>
       </span>
     </Link>
   );
