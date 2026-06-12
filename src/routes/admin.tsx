@@ -14,7 +14,60 @@ import {
   Upload,
   X,
   ShieldCheck,
+  Lock,
+  LayoutDashboard,
+  Store,
 } from "lucide-react";
+import { DashboardView } from "@/components/admin/DashboardView";
+
+const ADMIN_PASSWORD = "Apex2026";
+
+function AdminPasswordGate({ onUnlock }: { onUnlock: () => void }) {
+  const [pw, setPw] = useState("");
+  const [err, setErr] = useState("");
+  return (
+    <div className="mx-auto flex min-h-[70vh] max-w-md flex-col justify-center px-4 py-12">
+      <div className="rounded-2xl border border-border bg-card p-8 shadow-sm">
+        <div className="grid h-12 w-12 place-items-center rounded-xl bg-ember/10 text-ember">
+          <Lock className="h-6 w-6" />
+        </div>
+        <h1 className="mt-4 font-display text-3xl tracking-wide">Admin access</h1>
+        <p className="mt-2 text-sm text-muted-foreground">Enter the admin password to continue.</p>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            if (pw === ADMIN_PASSWORD) {
+              sessionStorage.setItem("admin_pw_ok", "1");
+              onUnlock();
+            } else {
+              setErr("Incorrect password");
+            }
+          }}
+          className="mt-6 space-y-3"
+        >
+          <input
+            type="password"
+            autoFocus
+            value={pw}
+            onChange={(e) => {
+              setPw(e.target.value);
+              setErr("");
+            }}
+            placeholder="Password"
+            className="w-full rounded-lg border border-border bg-background px-4 py-2.5 text-sm focus:border-ember focus:outline-none"
+          />
+          {err && <p className="text-xs text-destructive">{err}</p>}
+          <button
+            type="submit"
+            className="w-full rounded-lg bg-gradient-ember px-4 py-3 text-sm font-bold uppercase tracking-[0.18em] text-white shadow-ember"
+          >
+            Unlock
+          </button>
+        </form>
+      </div>
+    </div>
+  );
+}
 
 export const Route = createFileRoute("/admin")({
   head: () => ({ meta: [{ title: "Manage Gyms — Admin" }] }),
