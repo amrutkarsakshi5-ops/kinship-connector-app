@@ -40,19 +40,6 @@ export function Header() {
               </Link>
             );
           })}
-          {isAdmin && (
-            <Link
-              to="/admin"
-              className={
-                "inline-flex items-center gap-1.5 rounded-full px-4 py-1.5 text-xs font-bold uppercase tracking-[0.18em] transition-colors " +
-                (pathname.startsWith("/admin")
-                  ? "bg-ember/10 text-ember"
-                  : "text-muted-foreground hover:text-foreground")
-              }
-            >
-              <ShieldCheck className="h-3.5 w-3.5" /> Admin
-            </Link>
-          )}
         </nav>
 
         <div className="ml-auto flex items-center gap-3">
@@ -64,12 +51,14 @@ export function Header() {
               className="w-52 bg-transparent text-foreground placeholder:text-muted-foreground focus:outline-none"
             />
           </label>
-          <Link
-            to={user ? "/admin" : "/auth"}
-            className="rounded-full bg-gradient-ember px-5 py-2 text-xs font-bold uppercase tracking-[0.18em] text-white shadow-ember transition-transform hover:-translate-y-0.5"
-          >
-            {user ? "Dashboard" : "Sign In"}
-          </Link>
+          {!user && (
+            <Link
+              to="/auth"
+              className="rounded-full bg-gradient-ember px-5 py-2 text-xs font-bold uppercase tracking-[0.18em] text-white shadow-ember transition-transform hover:-translate-y-0.5"
+            >
+              Sign In
+            </Link>
+          )}
         </div>
       </div>
     </header>
