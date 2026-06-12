@@ -147,6 +147,7 @@ function emptyGym(): Partial<Gym> {
 function AdminPage() {
   const navigate = useNavigate();
   const { user, isAdmin, loading: authLoading } = useAuth();
+  const [pwOk, setPwOk] = useState(false);
   const [gyms, setGyms] = useState<Gym[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
@@ -157,6 +158,13 @@ function AdminPage() {
   const [editing, setEditing] = useState<Gym | null>(null);
   const [confirmDelete, setConfirmDelete] = useState<Gym | null>(null);
   const [claimingAdmin, setClaimingAdmin] = useState(false);
+  const [tab, setTab] = useState<"business" | "admin">("business");
+
+  useEffect(() => {
+    if (typeof window !== "undefined" && sessionStorage.getItem("admin_pw_ok") === "1") {
+      setPwOk(true);
+    }
+  }, []);
 
   useEffect(() => {
     if (!authLoading && !user) navigate({ to: "/auth" });
