@@ -179,14 +179,8 @@ function Home() {
       {/* CATEGORIES */}
       <section className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-12">
         <div className="flex items-end justify-between gap-4">
-          <div>
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-ember">
-              Browse by category
-            </p>
-            <h2 className="mt-2 font-display text-3xl tracking-wide sm:text-5xl">
-              What are you training for?
-            </h2>
-          </div>
+          <div />
+
           <Link
             to="/search"
             className="hidden items-center gap-1 text-sm font-bold uppercase tracking-[0.18em] text-ember sm:inline-flex"
