@@ -237,6 +237,10 @@ function AdminPage() {
     [gyms],
   );
 
+  if (!pwOk) {
+    return <AdminPasswordGate onUnlock={() => setPwOk(true)} />;
+  }
+
   if (authLoading) {
     return (
       <div className="grid min-h-[60vh] place-items-center">
