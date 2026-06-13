@@ -84,13 +84,19 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         content:
           "Find gyms, coaches, dojos, clubs and events. 12,400+ vetted pros across America.",
       },
-      { property: "og:title", content: "ForgeDial — Find your edge" },
+      { property: "og:title", content: "ForgeDial — America's directory for athletes" },
       {
         property: "og:description",
         content: "The directory built for athletes. Gyms, coaches, clubs, and events.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "ForgeDial — America's directory for athletes" },
+      { name: "description", content: "FitFinder Connect Clone is a platform for discovering and connecting with local fitness businesses." },
+      { property: "og:description", content: "FitFinder Connect Clone is a platform for discovering and connecting with local fitness businesses." },
+      { name: "twitter:description", content: "FitFinder Connect Clone is a platform for discovering and connecting with local fitness businesses." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/ca2becd0-fe0b-420d-b83f-2a503e2e47f7/id-preview-39beebdb--7d5995e8-fd4f-4cac-b238-5124ec56b6b8.lovable.app-1781277520901.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/ca2becd0-fe0b-420d-b83f-2a503e2e47f7/id-preview-39beebdb--7d5995e8-fd4f-4cac-b238-5124ec56b6b8.lovable.app-1781277520901.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
