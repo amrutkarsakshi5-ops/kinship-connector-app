@@ -189,34 +189,20 @@ function Home() {
           </Link>
         </div>
 
-        <div className="mt-6 grid grid-cols-2 gap-3 sm:mt-10 sm:gap-4 lg:grid-cols-4">
+        <div className="mt-6 grid grid-cols-4 gap-3 sm:mt-10 sm:gap-6 lg:grid-cols-8">
           {CATEGORIES.map((c) => (
             <Link
               key={c.name}
               to="/search"
               search={{ category: c.slug }}
-              className={`group relative flex flex-col overflow-hidden rounded-[20px] border border-border bg-gradient-to-br ${c.tint} shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-ember`}
+              className="group flex flex-col items-center gap-2 text-center"
             >
-              <div className="relative aspect-square overflow-hidden sm:aspect-[4/3]">
-                <img
-                  src={c.img}
-                  alt={c.name}
-                  loading="lazy"
-                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-                <span className="absolute left-2 top-2 grid h-8 w-8 place-items-center rounded-lg bg-card/95 shadow-sm backdrop-blur sm:left-3 sm:top-3 sm:h-10 sm:w-10 sm:rounded-xl">
-                  <c.icon className="h-4 w-4 text-ember sm:h-5 sm:w-5" />
-                </span>
+              <div className="grid aspect-square w-full place-items-center rounded-2xl border border-border bg-card shadow-sm transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-ember">
+                <c.icon className="h-8 w-8 text-ember sm:h-10 sm:w-10" strokeWidth={1.5} />
               </div>
-              <div className="flex flex-1 flex-col p-3 sm:p-4">
-                <p className="font-poppins text-base font-semibold leading-tight sm:text-xl">{c.name}</p>
-                <p className="font-poppins text-[10px] font-medium text-muted-foreground sm:text-xs">{c.count}</p>
-                <p className="mt-1 hidden font-poppins text-xs font-normal text-muted-foreground sm:line-clamp-2 sm:block">{c.desc}</p>
-                <span className="mt-2 inline-flex w-fit items-center gap-1 rounded-full bg-card px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-ember transition-colors group-hover:bg-ember group-hover:text-white sm:mt-3 sm:px-3 sm:py-1.5">
-                  Explore <ArrowRight className="h-3 w-3" />
-                </span>
-              </div>
+              <p className="font-poppins text-xs font-semibold leading-tight sm:text-sm">
+                {c.name}
+              </p>
             </Link>
           ))}
         </div>
