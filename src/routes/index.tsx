@@ -38,14 +38,14 @@ export const Route = createFileRoute("/")({
 });
 
 const CATEGORIES = [
-  { name: "Gyms", slug: "Gym", count: "4,200 listings", desc: "Strength, conditioning & full fitness floors.", icon: Dumbbell, tint: "from-ember/20 to-sunshine/10", img: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=600&q=80" },
-  { name: "Personal Trainers", slug: "Personal Trainer", count: "1,850 listings", desc: "1-on-1 coaches for every goal and level.", icon: User, tint: "from-azure/20 to-violet/10", img: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=600&q=80" },
-  { name: "Yoga & Pilates", slug: "Yoga & Pilates", count: "920 listings", desc: "Mat, reformer, vinyasa and restorative.", icon: Flower2, tint: "from-lime/20 to-sunshine/10", img: "https://images.unsplash.com/photo-1545205597-3d9d02c29597?auto=format&fit=crop&w=600&q=80" },
-  { name: "CrossFit Boxes", slug: "CrossFit Box", count: "480 listings", desc: "Affiliate boxes, WODs and community.", icon: Flame, tint: "from-violet/20 to-ember/10", img: "https://images.unsplash.com/photo-1517963879433-6ad2b056d712?auto=format&fit=crop&w=600&q=80" },
-  { name: "Martial Arts", slug: "Martial Arts", count: "760 listings", desc: "BJJ, Muay Thai, MMA, karate and boxing.", icon: Swords, tint: "from-ember/20 to-violet/10", img: "https://images.unsplash.com/photo-1554068865-24cecd4e34b8?auto=format&fit=crop&w=600&q=80" },
-  { name: "Sports Clubs", slug: "Sports Club", count: "1,340 listings", desc: "Leagues, teams and pick-up across sports.", icon: Trophy, tint: "from-sunshine/25 to-ember/10", img: "https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=600&q=80" },
-  { name: "Nutritionists", slug: "Nutritionist", count: "410 listings", desc: "Dietitians and performance nutrition.", icon: Apple, tint: "from-lime/25 to-azure/10", img: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=600&q=80" },
-  { name: "Sports Physio", slug: "Sports Physio", count: "620 listings", desc: "Recovery, rehab and injury prevention.", icon: Activity, tint: "from-azure/25 to-lime/10", img: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=600&q=80" },
+  { name: "Gyms", slug: "Gym", count: "4,200 listings", desc: "Strength, conditioning & full fitness floors.", icon: Dumbbell, bg: "bg-violet-100", fg: "text-violet-600", img: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=600&q=80" },
+  { name: "Personal Trainers", slug: "Personal Trainer", count: "1,850 listings", desc: "1-on-1 coaches for every goal and level.", icon: User, bg: "bg-amber-100", fg: "text-amber-600", img: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=600&q=80" },
+  { name: "Yoga & Pilates", slug: "Yoga & Pilates", count: "920 listings", desc: "Mat, reformer, vinyasa and restorative.", icon: Flower2, bg: "bg-emerald-100", fg: "text-emerald-600", img: "https://images.unsplash.com/photo-1545205597-3d9d02c29597?auto=format&fit=crop&w=600&q=80" },
+  { name: "Sports Clubs", slug: "Sports Club", count: "1,340 listings", desc: "Leagues, teams and pick-up across sports.", icon: Trophy, bg: "bg-sky-100", fg: "text-sky-600", img: "https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=600&q=80" },
+  { name: "Zumba", slug: "Zumba", count: "320 listings", desc: "Dance fitness and cardio classes.", icon: Flame, bg: "bg-pink-100", fg: "text-pink-500", img: "https://images.unsplash.com/photo-1517963879433-6ad2b056d712?auto=format&fit=crop&w=600&q=80" },
+  { name: "Nutritionists", slug: "Nutritionist", count: "410 listings", desc: "Dietitians and performance nutrition.", icon: Apple, bg: "bg-green-100", fg: "text-green-600", img: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=600&q=80" },
+  { name: "Physiotherapy", slug: "Sports Physio", count: "620 listings", desc: "Recovery, rehab and injury prevention.", icon: Activity, bg: "bg-blue-100", fg: "text-blue-600", img: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=600&q=80" },
+  { name: "Events", slug: "Events", count: "180 listings", desc: "Races, meets and community events.", icon: Calendar, bg: "bg-orange-100", fg: "text-orange-500", img: "https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=600&q=80" },
 ];
 
 const LISTINGS = [
