@@ -197,8 +197,8 @@ function Home() {
               search={{ category: c.slug }}
               className="group flex flex-col items-center gap-2 text-center"
             >
-              <div className="grid aspect-square w-full place-items-center rounded-2xl border border-border bg-card shadow-sm transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-ember">
-                <c.icon className="h-8 w-8 text-ember sm:h-10 sm:w-10" strokeWidth={1.5} />
+              <div className={`grid aspect-square w-full place-items-center rounded-2xl ${c.bg} shadow-sm transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-ember`}>
+                <c.icon className={`h-8 w-8 sm:h-10 sm:w-10 ${c.fg}`} strokeWidth={2} />
               </div>
               <p className="font-poppins text-xs font-semibold leading-tight sm:text-sm">
                 {c.name}
